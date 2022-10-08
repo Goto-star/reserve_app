@@ -1,0 +1,42 @@
+<div class="container room-show">
+  <%= render "shared/error", obj: @reservation %>
+  <div class="row">
+    <div class="col-md-8">
+      <%= image_tag @room.image_url, class: "room-show-image" %>
+      <div class="room-show-detile">
+          
+        <div class="room-show-profile">
+          <p class="room-show-profile-name"><%= @room.name %></p>
+          <p class="room-show-profile-address"><%= @room.address %></p>
+        </div>
+      </div>
+      <p class="room-show-detile-content"><%= @room.introduction %></p>
+    </div>
+
+    <div class="col-md-4">
+      <div class="room-show-nav">
+        <h5>¥<%= @room.price %>/日</h5>
+        <%= form_with model: @reservation do |f| %>
+        <div class="room-show-date-select">
+          <div>
+            <%= f.label :start_date, "開始日" %>
+            <%= f.date_field :start_date, class: "form-control mb-4", placeholder: "年/月/日" %>
+          </div>
+          <div>
+            <%= f.label :end_date, "終了日" %>
+            <%= f.date_field :end_date, class: "form-control mb-4", placeholder: "年/月/日" %>
+          </div>
+          <div>
+            <%= f.label :number_of_people, "宿泊人数" %>
+            <%= f.number_field :number_of_people, class: "form-control mb-4" %>
+          </div>
+          <%= f.hidden_field :room_id, value: @room.id %>
+          <%= f.hidden_field :price, value: @room.price %>
+          
+          <%= f.submit "予約する", class: "btn btn-primary form-control mb-4" %>
+        <% end %>
+        </div>
+      </div>  
+    </div>
+  </div>
+</div>
