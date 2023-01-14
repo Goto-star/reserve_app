@@ -1,0 +1,50 @@
+<div class="container-fiuld room-new">
+  <div class="col-lg-10 room-view">
+    <div class="update-content">
+      <div class="row">
+        <h3>ルーム情報登録</h3>
+        <% if flash[:alert] %>
+          <p class = "alert"><%= flash[:alert] %>
+        <% end %>
+        <%= render "shared/error", obj: @room %>
+      </div>
+    </div>
+    <%= form_with model: @room do |f| %>
+      <div class="update-content">
+        <div class="row">
+          <%= f.label :name, "ルーム名", class: "col-md-3 required-a" %>
+          <%= f.text_field :name, class: "form-control mb-4 col-md-9", placeholder: "ルーム名を入力" %>
+        </div>
+      </div>
+      <div class="update-content">
+        <div class="row">
+          <%= f.label :introduction, "ルーム紹介", class: "col-md-3 required-a" %>
+          <%= f.text_area :introduction, rows: "5", class: "form-control mb-4 col-md-9", placeholder: "ルーム説明を入力" %>
+        </div>
+      </div>
+      <div class="update-content">
+        <div class="row">
+          <%= f.label :price, "料金", class: "col-md-3 required-a" %>
+          <%= f.text_field :price, class: "form-control mb-4 col-md-9", placeholder: "1日あたりの料金を入力" %>
+        </div>
+      </div>
+      <div class="update-content">
+        <div class="row">
+          <%= f.label :address, "住所", class: "col-md-3 required-a" %>
+          <%= f.text_field :address, class: "form-control mb-4 col-md-9", placeholder: "住所を入力" %>
+        </div>
+      </div>
+      <div class="update-content">
+        <div class="row">
+          <%= f.label :image, "ルーム画像", class: "col-md-3 required-a" %>
+          <%= f.file_field :image, class: "mb-4 col-md-9", placeholder: "ルーム画像をアップロード" %>
+        </div>
+      </div>
+      <div class="update-content">
+        <div class="row">
+          <%= f.submit "登録する", class: "col-md-2 btn btn-primary mx-3" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

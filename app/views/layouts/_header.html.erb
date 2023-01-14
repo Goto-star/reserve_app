@@ -1,0 +1,51 @@
+<header class="header">
+    <div class="header-inner">
+        <div class="header-left-nav">
+            <%= link_to image_tag("logo.png"), "/" %>
+        </div>
+        <div class="header-right-nav">
+            <div class="nav-item">
+                <% if user_signed_in? %>
+                <div class="header-serch d-lg-inline-block d-none">
+                    <%= search_form_for @q, url: search_rooms_path do |f| %>
+                        <%= f.search_field :address_cont, placeholder: 'エリア' %>
+                    <% end %>
+                </div>
+                <div class="header-serch d-lg-inline-block d-none">
+                    <%= search_form_for @q, url: search_rooms_path do |f| %>
+                        <%= f.search_field :name_or_introduction_or_address_cont, placeholder: 'キーワード' %>
+                    <% end %>
+                </div>
+                 <div class="current_user_name">
+                     <%= current_user.name %> 
+                 </div>
+                 <div class="dropdown">
+                     <button type="button" id="dropdownMenuButton" class="btn btn-secondary dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          menu
+                     </button>
+                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <li><%= link_to "ルーム登録", new_room_path, class:"dropdown-item" %></li>
+                          <li><%= link_to "予約ルーム一覧", reservations_path, class:"dropdown-item" %></li>
+                          <li><%= link_to "登録済みルーム一覧", rooms_index_path, class:"dropdown-item" %></li>
+                          <li><%= link_to "設定", users_show_path, class:"dropdown-item" %></li>
+                          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"dropdown-item" %></li>
+                     </ul>
+                 </div>
+                <% else %>
+                <div class="header-serch d-lg-inline-block d-none">
+                    <%= search_form_for @q, url: search_rooms_path do |f| %>
+                        <%= f.search_field :address_cont, placeholder: 'エリア' %>
+                    <% end %>
+                </div>
+                <div class="header-serch d-lg-inline-block d-none">
+                    <%= search_form_for @q, url: search_rooms_path do |f| %>
+                        <%= f.search_field :name_or_introduction_or_address_cont, placeholder: 'キーワード' %>
+                    <% end %>
+                </div>
+                 <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary my-2 mx-3" %>
+                 <%= link_to "登録", new_user_registration_path, class: "btn btn-secondary" %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,47 @@
+<h3>プロフィール</h3>
+<div class="user-view-box">
+
+  <div class="update-content">
+      <div class="row">
+          <div class="col-md-3">
+            <% if @user.image? %>
+              <%= image_tag @user.image.url, class: "host-icon" %>
+            <% else %>
+              <img class="update-host-icon" src="/assets/default_icon.jpeg">
+            <% end %>
+          </div>
+      </div>
+  </div>
+
+  <div class="update-content">
+    <div class="row">
+      <label class="col-md-6" for="name">ユーザー名</label>
+      <div class="col-md-9">
+        <%= @user.name %>
+      </div>
+    </div>
+  </div>
+
+  <div class="update-content">
+    <div class="row">
+      <label class="col-md-3" for="email">メールアドレス</label>
+      <div class="col-md-9">
+        <%= @user.email %>
+      </div>
+    </div>
+  </div>
+
+  <div class="update-content">
+    <div class="row">
+      <label class="col-md-3" for="introduction">自己紹介</label>
+      <div class="col-md-9">
+        <%= @user.introduction %>
+      </div>
+    </div>
+  </div>
+  <div class="update-content">
+    <div class="btn btn-primary"><%= link_to "編集する", edit_user_registration_path, class:"link" %></div>
+  </div>
+</div>
+
+
